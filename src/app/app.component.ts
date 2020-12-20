@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { generateUuid, extractUuid, uuidsEqual } from 'projects/uuid/src/public-api';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Uuid';
+  uuid = generateUuid();
+  constructor() {
+    const copy = extractUuid("made a uuid" + this.uuid)!.toUpperCase();
+    console.log(uuidsEqual(this.uuid, copy));
+  }
 }
